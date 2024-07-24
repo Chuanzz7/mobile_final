@@ -4,6 +4,10 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
+kotlin {
+    jvmToolchain(8)
+}
+
 android {
     namespace = "com.example.mobile_final"
     compileSdk = 34
