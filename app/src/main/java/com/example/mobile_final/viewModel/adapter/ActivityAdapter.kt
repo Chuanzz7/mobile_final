@@ -1,16 +1,16 @@
-package com.example.mobile_final.viewModel
+package com.example.mobile_final.viewModel.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobile_final.databinding.ActivityItemBinding
+import com.example.mobile_final.databinding.ContainerActivityBinding
 import com.example.mobile_final.entity.Activity
 
 class ActivityAdapter : RecyclerView.Adapter<ActivityAdapter.ActivityItemModel>() {
 
-    class ActivityItemModel(val itemBinding: ActivityItemBinding) :
+    class ActivityItemModel(val itemBinding: ContainerActivityBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
 
     private val differCallback = object : DiffUtil.ItemCallback<Activity>() {
@@ -26,7 +26,7 @@ class ActivityAdapter : RecyclerView.Adapter<ActivityAdapter.ActivityItemModel>(
     val differ = AsyncListDiffer(this, differCallback)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActivityItemModel {
         return ActivityItemModel(
-            ActivityItemBinding.inflate(
+            ContainerActivityBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -39,7 +39,7 @@ class ActivityAdapter : RecyclerView.Adapter<ActivityAdapter.ActivityItemModel>(
     }
 
     override fun onBindViewHolder(holder: ActivityItemModel, position: Int) {
-        val currentHistory = differ.currentList[position]
-        holder.itemBinding.txtActivityUsername.text = "Test"
+        val thisItem = differ.currentList[position]
+        holder.itemBinding.txtActivityUsername.text = thisItem.description
     }
 }
