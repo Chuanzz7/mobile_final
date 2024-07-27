@@ -1,59 +1,56 @@
 package com.example.mobile_final
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mobile_final.database.AppDatabase
+import com.example.mobile_final.databinding.FragmentActivityBinding
+import com.example.mobile_final.viewModel.ActivityAdapter
+import com.example.mobile_final.viewModel.ActivityViewModel
+import com.example.mobile_final.viewModel.factory.ActivityViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ActivityFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ActivityFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var binding: FragmentActivityBinding
+    private lateinit var activityViewModel: ActivityViewModel
+    private lateinit var activityAdapter: ActivityAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        setupViewModel()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_activity, container, false)
+    ): View {
+        binding = FragmentActivityBinding.inflate(inflater, container, false)
+        setupHomeRecyclerView()
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ActivityFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ActivityFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun setupViewModel() {
+        val userAttemptDao = AppDatabase.getInstance(requireActivity()).activityDao()
+        val factory = ActivityViewModelFactory(userAttemptDao);
+        activityViewModel = ViewModelProvider(this, factory)[ActivityViewModel::class.java]
+    }
+
+    private fun setupHomeRecyclerView() {
+        activityAdapter = ActivityAdapter()
+        binding.recycleView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = activityAdapter
+        }
+
+        activity?.let {
+            activityViewModel.getActivity()
+                .observe(viewLifecycleOwner) { userAttempt ->
+                    activityAdapter.differ.submitList(userAttempt)
                 }
-            }
+        }
     }
 }
