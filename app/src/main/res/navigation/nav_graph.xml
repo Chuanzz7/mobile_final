@@ -20,9 +20,9 @@
     </fragment>
     <fragment
         android:id="@+id/activityFragment"
-        android:name="com.example.mobile_final.ActivityFragment"
+        android:name="com.example.mobile_final.ActivityListFragment"
         android:label="fragment_activity"
-        tools:layout="@layout/fragment_activity" />
+        tools:layout="@layout/fragment_activity_list" />
     <fragment
         android:id="@+id/subjectListFragment"
         android:name="com.example.mobile_final.SubjectListFragment"

@@ -12,7 +12,7 @@ data class Activity(
     @ColumnInfo(name = "user_id")
     var user_id: Int,
     @ColumnInfo(name = "description")
-    var description: String,
+    var description: String?,
     @ColumnInfo(name = "image")
-    var imagePath: String
+    var imagePath: String?
 )

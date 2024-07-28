@@ -11,4 +11,6 @@ data class User(
     var id: Int,
     @ColumnInfo(name = "name")
     var name: String,
+    @ColumnInfo(name = "profile_image")
+    var profileImage: String
 )

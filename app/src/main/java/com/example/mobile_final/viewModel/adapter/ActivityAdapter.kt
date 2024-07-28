@@ -5,8 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.mobile_final.databinding.ContainerActivityBinding
 import com.example.mobile_final.entity.Activity
+import java.io.File
 
 class ActivityAdapter : RecyclerView.Adapter<ActivityAdapter.ActivityItemModel>() {
 
@@ -41,5 +43,9 @@ class ActivityAdapter : RecyclerView.Adapter<ActivityAdapter.ActivityItemModel>(
     override fun onBindViewHolder(holder: ActivityItemModel, position: Int) {
         val thisItem = differ.currentList[position]
         holder.itemBinding.txtActivityUsername.text = thisItem.description
+        if (thisItem.imagePath != null) {
+            Glide.with(holder.itemView).load(File(thisItem.imagePath!!))
+                .into(holder.itemBinding.imageView)
+        }
     }
 }

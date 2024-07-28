@@ -13,7 +13,6 @@ import com.example.mobile_final.entity.User
 @Database(
     entities = [User::class, Activity::class, Subject::class],
     version = 1,
-    exportSchema = true
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun activityDao(): ActivityDao
