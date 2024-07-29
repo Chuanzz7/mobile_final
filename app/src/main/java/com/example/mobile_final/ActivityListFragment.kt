@@ -1,9 +1,7 @@
 package com.example.mobile_final
 
+import ImageSaver
 import android.app.ActionBar
-import android.content.Context
-import android.content.ContextWrapper
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
@@ -20,10 +18,6 @@ import com.example.mobile_final.databinding.FragmentActivityListBinding
 import com.example.mobile_final.viewModel.ActivityViewModel
 import com.example.mobile_final.viewModel.adapter.ActivityAdapter
 import com.example.mobile_final.viewModel.factory.ActivityViewModelFactory
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
-import java.util.UUID
 
 
 class ActivityListFragment : Fragment() {
@@ -69,25 +63,13 @@ class ActivityListFragment : Fragment() {
     }
 
     private fun pickPhoto() {
-
         pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
     }
-
-//    val getContent =
-//        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-//            image = uri
-//            var imageView = ImageView(requireContext())
-//            imageView.setImageURI(image)
-//            imageView.layout(0, 0, 0, 0)
-//            imageView.setLayoutParams(ActionBar.LayoutParams(400, 400))
-//            binding.createLayout.addView(imageView, 2)
-//        }
 
     val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         // Callback is invoked after the user selects a media item or closes the
         // photo picker.
         if (uri != null) {
-            println(uri);
             activityViewModel.imagePath.value = uri
             val imageView = ImageView(requireContext())
             imageView.setImageURI(uri)
@@ -101,7 +83,8 @@ class ActivityListFragment : Fragment() {
     private fun createPost() {
         val image: String?
         if (activityViewModel.imagePath.value != null) {
-            image = saveToInternalStorage(
+            image = ImageSaver.saveToInternalStorage(
+                requireContext(),
                 MediaStore.Images.Media.getBitmap(
                     requireContext().contentResolver,
                     activityViewModel.imagePath.value
@@ -113,29 +96,13 @@ class ActivityListFragment : Fragment() {
 
         activityViewModel.insertActivity(
             1,
-            binding.editTextText.text.toString(),
+            binding.txtTitle.text.toString(),
+            binding.txtDescription.text.toString(),
             image
         );
-    }
 
-    private fun saveToInternalStorage(bitmapImage: Bitmap): String {
-        val cw = ContextWrapper(requireContext())
-        val directory = cw.getDir("imageDir", Context.MODE_PRIVATE)
-        val mypath = File(directory, UUID.randomUUID().toString() + ".jpg")
-
-        var fos: FileOutputStream? = null
-        try {
-            fos = FileOutputStream(mypath)
-            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        } finally {
-            try {
-                fos!!.close()
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-        }
-        return mypath.absolutePath
+        binding.txtTitle.text = null
+        binding.txtDescription.text = null
+        binding.createLayout.removeViewAt(2)
     }
 }

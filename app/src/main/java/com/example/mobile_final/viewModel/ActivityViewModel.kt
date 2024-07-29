@@ -17,8 +17,8 @@ class ActivityViewModel(private val activityDao: ActivityDao) : ViewModel() {
         return activityDao.getAll();
     }
 
-    fun insertActivity(userId: Int, description: String, imagePath: String?) =
+    fun insertActivity(userId: Int, title: String, description: String, imagePath: String?) =
         viewModelScope.launch {
-            activityDao.insert(Activity(0, userId, description, imagePath))
+            activityDao.insert(Activity(0, userId, title, description, imagePath))
         }
 }

@@ -42,8 +42,12 @@ class ActivityAdapter : RecyclerView.Adapter<ActivityAdapter.ActivityItemModel>(
 
     override fun onBindViewHolder(holder: ActivityItemModel, position: Int) {
         val thisItem = differ.currentList[position]
-        holder.itemBinding.txtActivityUsername.text = thisItem.description
+        holder.itemBinding.txtActivityTitle.text = thisItem.title
+        holder.itemBinding.txtActivityDescription.text = thisItem.description
+
         if (thisItem.imagePath != null) {
+            holder.itemBinding.imageView.layoutParams.height = 400;
+            holder.itemBinding.imageView.layoutParams.width = 400;
             Glide.with(holder.itemView).load(File(thisItem.imagePath!!))
                 .into(holder.itemBinding.imageView)
         }

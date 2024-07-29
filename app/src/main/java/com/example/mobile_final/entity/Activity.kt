@@ -11,6 +11,8 @@ data class Activity(
     var id: Int,
     @ColumnInfo(name = "user_id")
     var user_id: Int,
+    @ColumnInfo(name = "title")
+    var title: String,
     @ColumnInfo(name = "description")
     var description: String?,
     @ColumnInfo(name = "image")
