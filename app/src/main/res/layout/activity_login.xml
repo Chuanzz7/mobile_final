@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
                 android:contentDescription="background"
-                app:srcCompat="@drawable/login_bg_bottom_left_corner" />
+                app:srcCompat="@drawable/bg_bottom_left_corner" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
