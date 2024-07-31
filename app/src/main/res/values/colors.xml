@@ -6,4 +6,5 @@
     <color name="accent">#6763EB</color>
     <color name="secondary">#AAB2F3</color>
     <color name="primary">#F4F4F9</color>
+    <color name="success">#22BB33</color>
 </resources>
