@@ -42,8 +42,8 @@ class SubjectListAdapter : RecyclerView.Adapter<SubjectListAdapter.SubjectItemMo
 
     override fun onBindViewHolder(holder: SubjectItemModel, position: Int) {
         val thisItem = differ.currentList[position]
-        holder.itemBinding.txtSubjectName.text = thisItem.name
-        holder.itemBinding.txtSubjectDescription.text = thisItem.description
+        holder.itemBinding.txtSubjectListName.text = thisItem.name
+        holder.itemBinding.txtLectureName.text = thisItem.description
         holder.itemBinding.root.setOnClickListener {
             it.findNavController().navigate(R.id.action_subjectListFragment_to_subjectFragment)
         }

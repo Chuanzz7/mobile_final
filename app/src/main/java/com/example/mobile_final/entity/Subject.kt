@@ -1,6 +1,5 @@
 package com.example.mobile_final.entity
 
-import android.graphics.Picture
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -18,4 +17,6 @@ data class Subject(
     var lectureName: String,
     @ColumnInfo(name = "lecture_picture")
     var lecturePicture: String,
+    @ColumnInfo(name = "details")
+    var subjectDetails: SubjectDetails
 )
