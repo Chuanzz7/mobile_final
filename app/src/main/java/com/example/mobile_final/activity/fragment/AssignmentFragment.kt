@@ -9,16 +9,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobile_final.database.AppDatabase
 import com.example.mobile_final.databinding.FragmentAssignmentBinding
-import com.example.mobile_final.databinding.FragmentSubjectListBinding
+import com.example.mobile_final.viewModel.AssignmentViewModel
 import com.example.mobile_final.viewModel.SubjectListViewModel
-import com.example.mobile_final.viewModel.adapter.SubjectListAdapter
+import com.example.mobile_final.viewModel.adapter.AssignmentAdapter
+import com.example.mobile_final.viewModel.factory.AssignmentViewModelFactory
 import com.example.mobile_final.viewModel.factory.SubjectListViewModelFactory
 
 
 class AssignmentFragment : Fragment() {
     private lateinit var binding: FragmentAssignmentBinding
-    private lateinit var subjectListViewModel: SubjectListViewModel
-    private lateinit var subjectListAdapter: SubjectListAdapter
+    private lateinit var assignmentViewModel: AssignmentViewModel
+    private lateinit var assignmentListAdapter: AssignmentAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,24 +36,23 @@ class AssignmentFragment : Fragment() {
     }
 
     private fun setupViewModel() {
-        val dao = AppDatabase.getInstance(requireActivity()).subjectDao()
-        val factory = SubjectListViewModelFactory(dao);
-        subjectListViewModel = ViewModelProvider(this, factory)[SubjectListViewModel::class.java]
+        val dao = AppDatabase.getInstance(requireActivity()).assignmentDao()
+        val factory = AssignmentViewModelFactory(dao);
+        assignmentViewModel = ViewModelProvider(this, factory)[AssignmentViewModel::class.java]
     }
 
     private fun setupHomeRecyclerView() {
-        subjectListAdapter = SubjectListAdapter()
+        assignmentListAdapter = AssignmentAdapter()
         binding.recycleViewAssignment.apply {
             val temp = LinearLayoutManager(context)
             temp.orientation = LinearLayoutManager.HORIZONTAL
             layoutManager = temp
-            adapter = subjectListAdapter
+            adapter = assignmentListAdapter
         }
 
         activity?.let {
-            subjectListViewModel.getAll()
-                .observe(viewLifecycleOwner) { x ->
-                    subjectListAdapter.differ.submitList(x)
+            assignmentViewModel.findAll().observe(viewLifecycleOwner) { x ->
+                    assignmentListAdapter.differ.submitList(x)
                 }
         }
     }

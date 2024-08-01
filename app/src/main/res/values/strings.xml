@@ -5,6 +5,7 @@
     <string name="bottom_nav_assignment">Assignment</string>
     <string name="bottom_nav_activity">Activity</string>
     <string name="bottom_nav_subject">Subject</string>
+    <string name="bottom_nav_task">Task</string>
     <string name="bottom_nav_home">Home</string>
     <string name="header">Header</string>
     <string name="content">Content</string>

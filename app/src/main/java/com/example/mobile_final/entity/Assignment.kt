@@ -13,4 +13,6 @@ data class Assignment(
     var subjectId: Int,
     @ColumnInfo(name = "name")
     var name: String,
+    @ColumnInfo(name = "description")
+    var description: String,
 )

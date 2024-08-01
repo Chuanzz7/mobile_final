@@ -44,4 +44,9 @@
         android:name="com.example.mobile_final.activity.fragment.AssignmentFragment"
         android:label="fragment_assignment"
         tools:layout="@layout/fragment_assignment" />
+    <fragment
+        android:id="@+id/taskFragment"
+        android:name="com.example.mobile_final.activity.fragment.TaskFragment"
+        android:label="fragment_task"
+        tools:layout="@layout/fragment_task" />
 </navigation>

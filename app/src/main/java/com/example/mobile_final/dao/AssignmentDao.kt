@@ -8,7 +8,6 @@ import com.example.mobile_final.entity.Assignment
 @Dao
 interface AssignmentDao {
 
-
     @Query("SELECT * FROM assignment")
-    fun findAll(): LiveData<Assignment>;
+    fun findAll(): LiveData<List<Assignment>>;
 }

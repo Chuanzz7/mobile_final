@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/assignmentFragment"
+        android:enabled="true"
+        android:icon="@drawable/explorer"
+        android:title="@string/bottom_nav_assignment" />
+    <item
         android:id="@+id/subjectListFragment"
         android:enabled="true"
         android:icon="@drawable/book"
@@ -11,13 +16,13 @@
         android:icon="@drawable/home"
         android:title="@string/bottom_nav_home" />
     <item
+        android:id="@+id/taskFragment"
+        android:enabled="true"
+        android:icon="@drawable/explorer"
+        android:title="@string/bottom_nav_task" />
+    <item
         android:id="@+id/activityFragment"
         android:enabled="true"
         android:icon="@drawable/explorer"
         android:title="@string/bottom_nav_activity" />
-    <item
-        android:id="@+id/assignmentFragment"
-        android:enabled="true"
-        android:icon="@drawable/explorer"
-        android:title="@string/bottom_nav_assignment" />
 </menu>
