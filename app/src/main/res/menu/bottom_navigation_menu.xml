@@ -15,4 +15,9 @@
         android:enabled="true"
         android:icon="@drawable/explorer"
         android:title="@string/bottom_nav_activity" />
+    <item
+        android:id="@+id/assignmentFragment"
+        android:enabled="true"
+        android:icon="@drawable/explorer"
+        android:title="@string/bottom_nav_assignment" />
 </menu>

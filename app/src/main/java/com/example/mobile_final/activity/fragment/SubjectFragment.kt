@@ -1,4 +1,4 @@
-package com.example.mobile_final
+package com.example.mobile_final.activity.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,6 @@ import com.example.mobile_final.databinding.FragmentSubjectBinding
 import com.example.mobile_final.viewModel.SubjectViewModel
 import com.example.mobile_final.viewModel.adapter.SubjectDetailsAdapter
 import com.example.mobile_final.viewModel.factory.SubjectViewModelFactory
-
 
 class SubjectFragment : Fragment() {
     private lateinit var binding: FragmentSubjectBinding

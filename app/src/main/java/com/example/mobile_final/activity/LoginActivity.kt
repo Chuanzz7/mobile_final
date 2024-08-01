@@ -1,4 +1,4 @@
-package com.example.mobile_final
+package com.example.mobile_final.activity
 
 import android.content.Intent
 import android.os.Bundle

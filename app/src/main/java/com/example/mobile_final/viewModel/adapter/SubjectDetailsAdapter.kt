@@ -58,7 +58,7 @@ class SubjectDetailsAdapter() :
             holder.itemBinding.expandedView.visibility =
                 if (this["expand"] == "true") View.VISIBLE else View.GONE
 
-            holder.itemBinding.materialCardView.setOnClickListener() {
+            holder.itemBinding.layoutSubjectDetailsItem.setOnClickListener() {
                 this["expand"] = if (this["expand"] == "true") "false" else "true"
                 notifyDataSetChanged()
             }

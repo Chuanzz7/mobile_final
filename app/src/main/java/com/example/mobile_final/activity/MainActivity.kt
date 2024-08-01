@@ -1,9 +1,10 @@
-package com.example.mobile_final
+package com.example.mobile_final.activity
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.example.mobile_final.R
 import com.example.mobile_final.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity() {

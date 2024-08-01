@@ -1,4 +1,4 @@
-package com.example.mobile_final
+package com.example.mobile_final.activity.fragment
 
 import ImageSaver
 import android.app.ActionBar
@@ -18,7 +18,6 @@ import com.example.mobile_final.databinding.FragmentActivityListBinding
 import com.example.mobile_final.viewModel.ActivityViewModel
 import com.example.mobile_final.viewModel.adapter.ActivityAdapter
 import com.example.mobile_final.viewModel.factory.ActivityViewModelFactory
-
 
 class ActivityListFragment : Fragment() {
     private lateinit var binding: FragmentActivityListBinding
