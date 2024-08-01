@@ -2,6 +2,7 @@ package com.example.mobile_final.viewModel.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -44,8 +45,10 @@ class SubjectListAdapter : RecyclerView.Adapter<SubjectListAdapter.SubjectItemMo
         val thisItem = differ.currentList[position]
         holder.itemBinding.txtSubjectListName.text = thisItem.name
         holder.itemBinding.txtLectureName.text = thisItem.description
+        val bundle = bundleOf("id" to thisItem.id)
         holder.itemBinding.root.setOnClickListener {
-            it.findNavController().navigate(R.id.action_subjectListFragment_to_subjectFragment)
+            it.findNavController()
+                .navigate(R.id.action_subjectListFragment_to_subjectFragment, bundle)
         }
     }
 }

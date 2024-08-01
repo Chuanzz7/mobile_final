@@ -18,5 +18,5 @@ data class Subject(
     @ColumnInfo(name = "lecture_picture")
     var lecturePicture: String,
     @ColumnInfo(name = "details")
-    var subjectDetails: SubjectDetails
+    var subjectDetails: List<HashMap<String, String>>
 )

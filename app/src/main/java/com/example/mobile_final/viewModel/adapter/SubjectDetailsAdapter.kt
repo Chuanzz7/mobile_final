@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobile_final.databinding.ContainerSubjectDetailsContentBinding
-import com.example.mobile_final.entity.SubjectDetails
 
 class SubjectDetailsAdapter() :
     RecyclerView.Adapter<SubjectDetailsAdapter.SubjectDetailsItemModel>() {
@@ -15,21 +14,20 @@ class SubjectDetailsAdapter() :
     class SubjectDetailsItemModel(val itemBinding: ContainerSubjectDetailsContentBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
 
-    private val differCallback = object : DiffUtil.ItemCallback<SubjectDetails>() {
+    private val differCallback = object : DiffUtil.ItemCallback<HashMap<String, String>>() {
         override fun areContentsTheSame(
-            oldItem: SubjectDetails,
-            newItem: SubjectDetails
+            oldItem: HashMap<String, String>,
+            newItem: HashMap<String, String>
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.size == newItem.size
         }
 
         override fun areItemsTheSame(
-            oldItem: SubjectDetails,
-            newItem: SubjectDetails
+            oldItem: HashMap<String, String>,
+            newItem: HashMap<String, String>
         ): Boolean {
             return oldItem == newItem
         }
-
     }
 
     val differ = AsyncListDiffer(this, differCallback)
@@ -55,13 +53,13 @@ class SubjectDetailsAdapter() :
         position: Int
     ) {
         with(differ.currentList[position]) {
-            holder.itemBinding.textContainerSubjectDetailsHeader.text = "Header"
-            holder.itemBinding.textContainerSubjectDetailsContent.text = "Content"
+            holder.itemBinding.textContainerSubjectDetailsHeader.text = this["header"]
+            holder.itemBinding.textContainerSubjectDetailsContent.text = this["content"]
             holder.itemBinding.expandedView.visibility =
-                if (this.expand) View.VISIBLE else View.GONE
+                if (this["expand"] == "true") View.VISIBLE else View.GONE
 
             holder.itemBinding.materialCardView.setOnClickListener() {
-                this.expand = !this.expand
+                this["expand"] = if (this["expand"] == "true") "false" else "true"
                 notifyDataSetChanged()
             }
         }
