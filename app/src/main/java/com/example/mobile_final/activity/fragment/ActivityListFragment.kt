@@ -94,7 +94,6 @@ class ActivityListFragment : Fragment() {
         }
 
         activityViewModel.insertActivity(
-            1,
             binding.txtTitle.text.toString(),
             binding.txtDescription.text.toString(),
             image

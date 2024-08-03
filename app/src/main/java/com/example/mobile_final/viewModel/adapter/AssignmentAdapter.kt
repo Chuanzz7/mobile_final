@@ -2,9 +2,11 @@ package com.example.mobile_final.viewModel.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mobile_final.R
 import com.example.mobile_final.databinding.ContainerAssignmentListBinding
 import com.example.mobile_final.entity.Assignment
 
@@ -52,6 +54,9 @@ class AssignmentAdapter : RecyclerView.Adapter<AssignmentAdapter.AssignmentItemM
         position: Int
     ) {
         with(differ.currentList[position]) {
+            holder.itemBinding.button.setOnClickListener {
+                it.findNavController().navigate(R.id.action_assignmentFragment_to_taskFragment)
+            }
 //            holder.itemBinding.textContainerSubjectDetailsHeader.text = this["header"]
 //            holder.itemBinding.textContainerSubjectDetailsContent.text = this["content"]
 //            holder.itemBinding.expandedView.visibility =

@@ -9,8 +9,6 @@ data class Activity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var id: Int,
-    @ColumnInfo(name = "user_id")
-    var user_id: Int,
     @ColumnInfo(name = "title")
     var title: String,
     @ColumnInfo(name = "description")

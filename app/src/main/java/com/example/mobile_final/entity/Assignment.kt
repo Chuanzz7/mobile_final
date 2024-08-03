@@ -3,6 +3,7 @@ package com.example.mobile_final.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.Date
 
 @Entity(tableName = "assignment")
 data class Assignment(
@@ -15,4 +16,8 @@ data class Assignment(
     var name: String,
     @ColumnInfo(name = "description")
     var description: String,
+    @ColumnInfo(name = "dueDate")
+    var dueDate: Date,
+    @ColumnInfo(name = "submitted")
+    var submitted: Boolean = false
 )
