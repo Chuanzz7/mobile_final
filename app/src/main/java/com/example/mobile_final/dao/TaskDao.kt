@@ -17,7 +17,7 @@ interface TaskDao {
     @Query("SELECT * FROM task ORDER by assignment_id, id")
     fun findAll(): LiveData<List<Task>>
 
-    @Query("SELECT * FROM task ORDER by completed_time desc")
+    @Query("SELECT * FROM task ORDER by dueDate asc")
     fun findAllAssignmentTask(): LiveData<List<AssignmentTask>>
 
     @Update
