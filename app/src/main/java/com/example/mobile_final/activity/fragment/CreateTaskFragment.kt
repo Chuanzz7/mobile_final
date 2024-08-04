@@ -148,9 +148,6 @@ class CreateTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener,
         saveMinute = minute
 
         val calendar = Calendar.getInstance()
-        calendar.set(Calendar.DAY_OF_MONTH, saveDay)
-        calendar.set(Calendar.MONTH, saveMonth)
-        calendar.set(Calendar.YEAR, saveYear)
         calendar.set(Calendar.HOUR, saveHour)
         calendar.set(Calendar.MINUTE, saveMinute)
         binding.editTextTime2.setText(SimpleDateFormat("HH:mm a").format(calendar.time))

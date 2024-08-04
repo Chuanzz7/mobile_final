@@ -1,21 +1,23 @@
 package com.example.mobile_final.viewModel.adapter
 
 import android.content.Context
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobile_final.databinding.ContainerTaskHeaderBinding
 import com.example.mobile_final.dto.AssignmentTask
 import com.example.mobile_final.entity.Task
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class TaskAdapter(val context: Context) :
     RecyclerView.Adapter<TaskAdapter.TaskItemModel>() {
 
     var onItemClick: ((Task) -> Unit)? = null
-    private var assignmentHeaderId: Int? = null
+    var assignmentHeaderId: Int? = null
 
     class TaskItemModel(val itemBinding: ContainerTaskHeaderBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
@@ -32,7 +34,7 @@ class TaskAdapter(val context: Context) :
             oldItem: AssignmentTask,
             newItem: AssignmentTask
         ): Boolean {
-            return oldItem == newItem
+            return oldItem.task.id == newItem.task.id
         }
     }
 
@@ -61,18 +63,26 @@ class TaskAdapter(val context: Context) :
         with(differ.currentList[position]) {
             val layout = holder.itemBinding.layoutTaskHeader
 
-            if (assignmentHeaderId != this.assignment.id) {
-                assignmentHeaderId = this.assignment.id
-                val textView = TextView(context)
-                textView.setText(this.assignment.name)
-                layout.addView(textView, 0)
-            }
-
             holder.itemBinding.textContainerTaskContent.text = this.task.name
             holder.itemBinding.checkBoxTaskCompleted.isChecked = this.task.completed
+            holder.itemBinding.txtAssignmentName.text = this.assignment.name
+            holder.itemBinding.txtTaskDueDate.text = SimpleDateFormat("dd-MM-yyyy HH:mm a").format(this.task.dueDate)
+            if (this.task.completed) {
+                holder.itemBinding.textContainerTaskContent.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+            } else {
+                holder.itemBinding.textContainerTaskContent.paintFlags =
+                    Paint.STRIKE_THRU_TEXT_FLAG.inv()
+            }
+
             holder.itemBinding.expandedView.setOnClickListener {
                 this.task.completed = !this.task.completed
+                if (this.task.completed) {
+                    this.task.completed_time = Date()
+                } else {
+                    this.task.completed_time = null
+                }
                 onItemClick?.invoke(this.task)
+                notifyDataSetChanged()
             }
         }
     }

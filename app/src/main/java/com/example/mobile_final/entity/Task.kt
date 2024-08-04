@@ -18,5 +18,7 @@ data class Task(
     @ColumnInfo(name = "dueDate")
     var dueDate: Date,
     @ColumnInfo(name = "completed")
-    var completed: Boolean = false
+    var completed: Boolean = false,
+    @ColumnInfo(name = "completed_time")
+    var completed_time: Date? = null
 )

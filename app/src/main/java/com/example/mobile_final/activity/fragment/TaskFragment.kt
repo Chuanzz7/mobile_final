@@ -49,11 +49,12 @@ class TaskFragment : Fragment() {
         //TODO fix this
         taskAdapter.onItemClick = {
             taskViewModel.update(it)
-            binding.recycleViewTask.swapAdapter(taskAdapter, true)
         }
         activity?.let {
             taskViewModel.findAll2()
-                .observe(viewLifecycleOwner) { taskAdapter.differ.submitList(it) }
+                .observe(viewLifecycleOwner) {
+                    taskAdapter.differ.submitList(it)
+                }
         }
     }
 
