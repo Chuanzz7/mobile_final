@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mobile_final.R
 import com.example.mobile_final.database.AppDatabase
 import com.example.mobile_final.databinding.FragmentSubjectBinding
 import com.example.mobile_final.viewModel.SubjectViewModel
@@ -32,6 +34,12 @@ class SubjectFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentSubjectBinding.inflate(inflater, container, false)
+        subjectViewModel.subject.observe(viewLifecycleOwner) {
+            binding.txtSubjectName.text = subjectViewModel.subject.value?.name
+        }
+        binding.backBtn.setOnClickListener {
+            it.findNavController().navigate(R.id.action_subjectFragment_to_subjectListFragment)
+        }
         setupHomeRecyclerView()
         return binding.root
     }

@@ -30,7 +30,11 @@
         android:id="@+id/subjectFragment"
         android:name="com.example.mobile_final.activity.fragment.SubjectFragment"
         android:label="fragment_subject"
-        tools:layout="@layout/fragment_subject" />
+        tools:layout="@layout/fragment_subject" >
+        <action
+            android:id="@+id/action_subjectFragment_to_subjectListFragment"
+            app:destination="@id/subjectListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/assignmentFragment"
         android:name="com.example.mobile_final.activity.fragment.AssignmentFragment"

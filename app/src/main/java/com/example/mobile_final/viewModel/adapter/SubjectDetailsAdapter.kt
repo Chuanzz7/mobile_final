@@ -1,5 +1,6 @@
 package com.example.mobile_final.viewModel.adapter
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,6 +55,8 @@ class SubjectDetailsAdapter() :
     ) {
         with(differ.currentList[position]) {
             holder.itemBinding.textContainerSubjectDetailsHeader.text = this["header"]
+            holder.itemBinding.textContainerSubjectDetailsHeader.paintFlags =
+                Paint.UNDERLINE_TEXT_FLAG
             holder.itemBinding.textContainerSubjectDetailsContent.text = this["content"]
             holder.itemBinding.expandedView.visibility =
                 if (this["expand"] == "true") View.VISIBLE else View.GONE
