@@ -11,7 +11,7 @@ class LoginActivity : BaseActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.loginBtn.setOnClickListener {
+        binding.startBtn.setOnClickListener {
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         }
     }

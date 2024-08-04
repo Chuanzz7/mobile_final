@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">mobile_final</string>
+    <string name="intro_title">Stay Connect and Engage Your Study with <font color="#6033ba">\n Coursemate</font></string>
+    <string name="intro_text">Browse the latest courses from the apps\nGet latest assignment details\nGrouping and discuss among each other</string>
+    <string name="intro_button">Let\'s Get Started</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="bottom_nav_assignment">Assignment</string>
