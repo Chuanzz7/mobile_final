@@ -3,7 +3,7 @@
     <item
         android:id="@+id/assignmentFragment"
         android:enabled="true"
-        android:icon="@drawable/explorer"
+        android:icon="@drawable/assignment"
         android:title="@string/bottom_nav_assignment" />
     <item
         android:id="@+id/subjectListFragment"
@@ -18,7 +18,7 @@
     <item
         android:id="@+id/taskFragment"
         android:enabled="true"
-        android:icon="@drawable/explorer"
+        android:icon="@drawable/task"
         android:title="@string/bottom_nav_task" />
     <item
         android:id="@+id/activityFragment"
