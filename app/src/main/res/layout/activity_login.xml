@@ -30,7 +30,7 @@
                 app:srcCompat="@drawable/group_7" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/txtAssignmentName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -39,7 +39,7 @@
                 android:textSize="31sp" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/txtAssignmentWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"

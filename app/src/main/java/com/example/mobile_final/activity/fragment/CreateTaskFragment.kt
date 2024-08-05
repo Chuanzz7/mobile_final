@@ -107,9 +107,7 @@ class CreateTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener,
                     )
                 }
             }
-
             it.findNavController().navigate(R.id.action_createTaskFragment_to_taskFragment)
-            //TODO toast
         }
     }
 
@@ -123,11 +121,11 @@ class CreateTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener,
     }
 
     private fun pickDateTime() {
-        binding.editTextDate2.setOnClickListener {
+        binding.txtDate.setOnClickListener {
             DatePickerDialog(requireContext(), this, year, month, day).show()
         }
 
-        binding.editTextTime2.setOnClickListener {
+        binding.txtTime.setOnClickListener {
             TimePickerDialog(requireContext(), this, hour, minute, true).show()
         }
     }
@@ -140,7 +138,7 @@ class CreateTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener,
         calendar.set(Calendar.DAY_OF_MONTH, saveDay)
         calendar.set(Calendar.MONTH, saveMonth)
         calendar.set(Calendar.YEAR, saveYear)
-        binding.editTextDate2.setText(SimpleDateFormat("dd-MM-yyyy").format(calendar.time))
+        binding.txtDate.setText(SimpleDateFormat("dd-MM-yyyy").format(calendar.time))
     }
 
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
@@ -150,6 +148,6 @@ class CreateTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener,
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.HOUR, saveHour)
         calendar.set(Calendar.MINUTE, saveMinute)
-        binding.editTextTime2.setText(SimpleDateFormat("HH:mm a").format(calendar.time))
+        binding.txtTime.setText(SimpleDateFormat("HH:mm a").format(calendar.time))
     }
 }

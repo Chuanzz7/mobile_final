@@ -7,18 +7,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobile_final.databinding.ContainerTaskHeaderBinding
+import com.example.mobile_final.databinding.ContainerTaskHeaderCompletedBinding
 import com.example.mobile_final.dto.AssignmentTask
 import com.example.mobile_final.entity.Task
 import java.text.SimpleDateFormat
 import java.util.Date
 
-class TaskAdapter(val context: Context) :
-    RecyclerView.Adapter<TaskAdapter.TaskItemModel>() {
+class TaskAdapterCompleted(val context: Context) :
+    RecyclerView.Adapter<TaskAdapterCompleted.TaskItemModel>() {
 
     var onItemClick: ((Task) -> Unit)? = null
 
-    class TaskItemModel(val itemBinding: ContainerTaskHeaderBinding) :
+    class TaskItemModel(val itemBinding: ContainerTaskHeaderCompletedBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
 
     private val differCallback = object : DiffUtil.ItemCallback<AssignmentTask>() {
@@ -43,7 +43,7 @@ class TaskAdapter(val context: Context) :
         viewType: Int
     ): TaskItemModel {
         return TaskItemModel(
-            ContainerTaskHeaderBinding.inflate(
+            ContainerTaskHeaderCompletedBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -63,7 +63,8 @@ class TaskAdapter(val context: Context) :
             holder.itemBinding.textContainerTaskContent.text = this.task.name
             holder.itemBinding.checkBoxTaskCompleted.isChecked = this.task.completed
             holder.itemBinding.txtAssignmentName.text = this.assignment.name
-            holder.itemBinding.txtTaskDueDate.text = SimpleDateFormat("dd-MM-yyyy HH:mm a").format(this.task.dueDate)
+            holder.itemBinding.txtTaskDueDate.text =
+                SimpleDateFormat("dd-MM-yyyy HH:mm a").format(this.task.dueDate)
             if (this.task.completed) {
                 holder.itemBinding.textContainerTaskContent.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             } else {

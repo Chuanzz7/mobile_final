@@ -33,4 +33,15 @@ class SubjectViewModel(private val subjectDao: SubjectDao) : ViewModel() {
                 liveDetails.postValue(list)
             }
     }
+
+     fun update(subject: Subject) = viewModelScope.launch {
+        subjectDao.update(subject)
+    }
+
+    fun enroll() {
+        if (subject.value != null) {
+            subject.value!!.enrolled = true
+            update(subject.value!!)
+        }
+    }
 }

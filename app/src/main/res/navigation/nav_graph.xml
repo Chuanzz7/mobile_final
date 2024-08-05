@@ -42,7 +42,9 @@
         tools:layout="@layout/fragment_assignment" >
         <action
             android:id="@+id/action_assignmentFragment_to_taskFragment"
-            app:destination="@id/taskFragment" />
+            app:destination="@id/taskFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/assignmentFragment" />
     </fragment>
     <fragment
         android:id="@+id/taskFragment"

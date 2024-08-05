@@ -2,9 +2,9 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/baseBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="90dp"
     android:fillViewport="true"
     android:fitsSystemWindows="true"
     tools:context=".activity.fragment.SubjectFragment">
@@ -19,28 +19,28 @@
             android:orientation="vertical"
             android:paddingTop="20dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginBottom="20dp"
-                android:adjustViewBounds="false"
-                android:background="@drawable/subject_bg"
-                android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+            <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--                android:id="@+id/imageView2"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="200dp"-->
+            <!--                android:layout_marginBottom="20dp"-->
+            <!--                android:adjustViewBounds="false"-->
+            <!--                android:background="@drawable/subject_bg"-->
+            <!--                android:scaleType="centerCrop"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent">-->
 
-                <ImageView
-                    android:id="@+id/backBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="32dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/back" />
+            <!--                &lt;!&ndash;                <ImageView&ndash;&gt;-->
+            <!--                &lt;!&ndash;                    android:id="@+id/backBtn"&ndash;&gt;-->
+            <!--                &lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--                &lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--                &lt;!&ndash;                    android:layout_marginStart="16dp"&ndash;&gt;-->
+            <!--                &lt;!&ndash;                    android:layout_marginTop="32dp"&ndash;&gt;-->
+            <!--                &lt;!&ndash;                    app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+            <!--                &lt;!&ndash;                    app:layout_constraintTop_toTopOf="parent"&ndash;&gt;-->
+            <!--                &lt;!&ndash;                    app:srcCompat="@drawable/back" />&ndash;&gt;-->
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
             <TextView
                 android:id="@+id/txt_subject_name"
@@ -111,27 +111,22 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
-                <androidx.appcompat.widget.AppCompatButton
+                <Button
                     android:id="@+id/btn_enroll"
-                    style="@android:style/Widget.Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/secondary_bg"
                     android:text="Enroll"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:theme="@style/evaluate.button.disable" />
 
-                <androidx.appcompat.widget.AppCompatButton
+                <Button
                     android:id="@+id/button5"
-                    style="@android:style/Widget.Button"
-                    android:layout_width="match_parent"
+                    android:theme="@style/evaluate.button.disable"                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
                     android:layout_marginHorizontal="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/secondary_bg"
                     android:text="Consultation"
                     android:textColor="@color/white" />
             </LinearLayout>

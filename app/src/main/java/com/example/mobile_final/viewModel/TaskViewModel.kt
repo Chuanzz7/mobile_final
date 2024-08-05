@@ -19,11 +19,11 @@ class TaskViewModel(private val taskDao: TaskDao) : ViewModel() {
         taskDao.updateCompleted(task)
     }
 
-    fun findAll(): LiveData<List<Task>> {
-        return taskDao.findAll()
+    fun findAllIncomplete(): LiveData<List<AssignmentTask>> {
+        return taskDao.findAllAssignmentTaskIncomplete()
     }
 
-    fun findAll2(): LiveData<List<AssignmentTask>> {
-        return taskDao.findAllAssignmentTask()
+    fun findAllCompleted(): LiveData<List<AssignmentTask>> {
+        return taskDao.findAllAssignmentTaskCompleted()
     }
 }

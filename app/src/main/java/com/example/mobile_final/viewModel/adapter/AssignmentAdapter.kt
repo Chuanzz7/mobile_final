@@ -8,26 +8,27 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobile_final.R
 import com.example.mobile_final.databinding.ContainerAssignmentListBinding
-import com.example.mobile_final.entity.Assignment
+import com.example.mobile_final.dto.AssignmentSubject
+import java.text.SimpleDateFormat
 
 class AssignmentAdapter : RecyclerView.Adapter<AssignmentAdapter.AssignmentItemModel>() {
 
     class AssignmentItemModel(val itemBinding: ContainerAssignmentListBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
 
-    private val differCallback = object : DiffUtil.ItemCallback<Assignment>() {
+    private val differCallback = object : DiffUtil.ItemCallback<AssignmentSubject>() {
         override fun areContentsTheSame(
-            oldItem: Assignment,
-            newItem: Assignment
+            oldItem: AssignmentSubject,
+            newItem: AssignmentSubject
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.assignment.submitted == newItem.assignment.submitted
         }
 
         override fun areItemsTheSame(
-            oldItem: Assignment,
-            newItem: Assignment
+            oldItem: AssignmentSubject,
+            newItem: AssignmentSubject
         ): Boolean {
-            return oldItem == newItem
+            return oldItem.assignment.id == newItem.assignment.id
         }
     }
 
@@ -54,18 +55,17 @@ class AssignmentAdapter : RecyclerView.Adapter<AssignmentAdapter.AssignmentItemM
         position: Int
     ) {
         with(differ.currentList[position]) {
-            holder.itemBinding.button.setOnClickListener {
+
+            holder.itemBinding.txtAssignmentName.text = this.assignment.name
+            holder.itemBinding.txtSubjectName.text = this.subject.name
+            holder.itemBinding.txtAssignmentWeight.text = this.assignment.weightage
+            holder.itemBinding.txtAssignmentDescription.text = this.assignment.description
+            holder.itemBinding.txtDeliverables.text = this.assignment.deliverables
+            holder.itemBinding.txtAssignmentDue.text =
+                (SimpleDateFormat("dd-MM-yyyy").format(this.assignment.dueDate))
+            holder.itemBinding.btnTaskNavigate.setOnClickListener {
                 it.findNavController().navigate(R.id.action_assignmentFragment_to_taskFragment)
             }
-//            holder.itemBinding.textContainerSubjectDetailsHeader.text = this["header"]
-//            holder.itemBinding.textContainerSubjectDetailsContent.text = this["content"]
-//            holder.itemBinding.expandedView.visibility =
-//                if (this["expand"] == "true") View.VISIBLE else View.GONE
-//
-//            holder.itemBinding.layoutSubjectDetailsItem.setOnClickListener() {
-//                this["expand"] = if (this["expand"] == "true") "false" else "true"
-//                notifyDataSetChanged()
-//            }
         }
     }
 }

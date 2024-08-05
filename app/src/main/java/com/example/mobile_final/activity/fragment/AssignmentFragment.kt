@@ -51,7 +51,7 @@ class AssignmentFragment : Fragment() {
         }
 
         activity?.let {
-            assignmentViewModel.findAll().observe(viewLifecycleOwner) { x ->
+            assignmentViewModel.findAllAssignmentSubject().observe(viewLifecycleOwner) { x ->
                     assignmentListAdapter.differ.submitList(x)
                 }
         }

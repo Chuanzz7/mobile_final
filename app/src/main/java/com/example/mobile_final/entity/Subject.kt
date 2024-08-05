@@ -18,5 +18,7 @@ data class Subject(
     @ColumnInfo(name = "lecture_picture")
     var lecturePicture: String,
     @ColumnInfo(name = "details")
-    var subjectDetails: List<HashMap<String, String>>
+    var subjectDetails: List<HashMap<String, String>>,
+    @ColumnInfo(name = "enrolled")
+    var enrolled: Boolean = false
 )

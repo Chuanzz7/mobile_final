@@ -17,8 +17,11 @@ interface TaskDao {
     @Query("SELECT * FROM task ORDER by assignment_id, id")
     fun findAll(): LiveData<List<Task>>
 
-    @Query("SELECT * FROM task ORDER by dueDate asc")
-    fun findAllAssignmentTask(): LiveData<List<AssignmentTask>>
+    @Query("SELECT * FROM task WHERE task.completed = 0 ORDER by dueDate asc ")
+    fun findAllAssignmentTaskIncomplete(): LiveData<List<AssignmentTask>>
+
+    @Query("SELECT * FROM task WHERE task.completed = 1")
+    fun findAllAssignmentTaskCompleted(): LiveData<List<AssignmentTask>>
 
     @Update
     suspend fun updateCompleted(task: Task)

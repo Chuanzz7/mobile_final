@@ -16,8 +16,12 @@ data class Assignment(
     var name: String,
     @ColumnInfo(name = "description")
     var description: String,
+    @ColumnInfo(name = "deliverables")
+    var deliverables: String,
     @ColumnInfo(name = "dueDate")
     var dueDate: Date,
     @ColumnInfo(name = "submitted")
-    var submitted: Boolean = false
+    var submitted: Boolean = false,
+    @ColumnInfo(name = "weightage")
+    var weightage: String,
 )

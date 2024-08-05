@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mobile_final.dao.AssignmentDao
+import com.example.mobile_final.dto.AssignmentSubject
 import com.example.mobile_final.entity.Assignment
 import kotlinx.coroutines.launch
 
@@ -14,6 +15,10 @@ class AssignmentViewModel(private val assignmentDao: AssignmentDao) : ViewModel(
 
     fun findAll(): LiveData<List<Assignment>> {
         return assignmentDao.findAll()
+    }
+
+    fun findAllAssignmentSubject(): LiveData<List<AssignmentSubject>> {
+        return assignmentDao.findAllEnrolled()
     }
 
      fun findAllMutable() = viewModelScope.launch {

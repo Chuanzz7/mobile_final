@@ -4,11 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mobile_final.R
 import com.example.mobile_final.database.AppDatabase
 import com.example.mobile_final.databinding.FragmentSubjectBinding
 import com.example.mobile_final.viewModel.SubjectViewModel
@@ -34,12 +33,22 @@ class SubjectFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentSubjectBinding.inflate(inflater, container, false)
+
+        binding.btnEnroll.setOnClickListener {
+            subjectViewModel.enroll()
+            Toast.makeText(requireContext(), "Subject Enrolled !", Toast.LENGTH_SHORT).show()
+        }
+
         subjectViewModel.subject.observe(viewLifecycleOwner) {
-            binding.txtSubjectName.text = subjectViewModel.subject.value?.name
+            it?.let {
+                binding.txtSubjectName.text = it.name
+                binding.btnEnroll.isEnabled = !it.enrolled
+                binding.btnEnroll.isClickable = !it.enrolled
+            }
         }
-        binding.backBtn.setOnClickListener {
-            it.findNavController().navigate(R.id.action_subjectFragment_to_subjectListFragment)
-        }
+//        binding.backBtn.setOnClickListener {
+//            it.findNavController().navigate(R.id.action_subjectFragment_to_subjectListFragment)
+//        }
         setupHomeRecyclerView()
         return binding.root
     }
