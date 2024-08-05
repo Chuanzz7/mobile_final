@@ -62,6 +62,11 @@ class CreateTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener,
         assignmentViewModel.assignmentList.observe(viewLifecycleOwner) {
             dropdown(it)
         }
+
+        binding.btnBack.setOnClickListener {
+            it.findNavController().navigate(R.id.action_createTaskFragment_to_taskFragment)
+        }
+
         return binding.root
     }
 

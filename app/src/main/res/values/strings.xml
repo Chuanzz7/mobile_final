@@ -15,4 +15,11 @@
     <string name="to_do_list">To Do List</string>
     <string name="back">Back</string>
     <string name="description">Description</string>
+    <string name="assignment_name">Assignment Name</string>
+    <string name="due_date">Due Date</string>
+    <string name="weightage">Weightage</string>
+    <string name="deliverables">Deliverables</string>
+    <string name="task">Task</string>
+    <string name="subject_name">Subject Name</string>
+    <string name="submit">Submit</string>
 </resources>
