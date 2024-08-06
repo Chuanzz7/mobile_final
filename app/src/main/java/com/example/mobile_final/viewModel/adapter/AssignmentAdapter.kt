@@ -1,5 +1,7 @@
 package com.example.mobile_final.viewModel.adapter
 
+import android.app.AlertDialog
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -11,7 +13,9 @@ import com.example.mobile_final.databinding.ContainerAssignmentListBinding
 import com.example.mobile_final.dto.AssignmentSubject
 import java.text.SimpleDateFormat
 
-class AssignmentAdapter : RecyclerView.Adapter<AssignmentAdapter.AssignmentItemModel>() {
+class AssignmentAdapter(val context: Context) :
+    RecyclerView.Adapter<AssignmentAdapter.AssignmentItemModel>() {
+    var onItemClick: ((Int) -> Unit)? = null
 
     class AssignmentItemModel(val itemBinding: ContainerAssignmentListBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
@@ -65,6 +69,21 @@ class AssignmentAdapter : RecyclerView.Adapter<AssignmentAdapter.AssignmentItemM
                 (SimpleDateFormat("dd-MM-yyyy").format(this.assignment.dueDate))
             holder.itemBinding.btnTaskNavigate.setOnClickListener {
                 it.findNavController().navigate(R.id.action_assignmentFragment_to_taskFragment)
+            }
+            holder.itemBinding.btnSubmitAssignment.setOnClickListener {
+                val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+                builder
+                    .setMessage("All related task will be completed")
+                    .setTitle("Submit Assignment?")
+                    .setPositiveButton("Yes") { dialog, which ->
+                        onItemClick?.invoke(this.assignment.id)
+                    }
+                    .setNegativeButton("No") { dialog, which ->
+                        // Do something else.
+                    }
+
+                val dialog: AlertDialog = builder.create()
+                dialog.show()
             }
         }
     }

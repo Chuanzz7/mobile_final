@@ -26,4 +26,8 @@ class TaskViewModel(private val taskDao: TaskDao) : ViewModel() {
     fun findAllCompleted(): LiveData<List<AssignmentTask>> {
         return taskDao.findAllAssignmentTaskCompleted()
     }
+
+    fun updateAllAssignment(assignmentId: Int) = viewModelScope.launch {
+        taskDao.updateAllByAssignmentId(assignmentId, Date().time)
+    }
 }

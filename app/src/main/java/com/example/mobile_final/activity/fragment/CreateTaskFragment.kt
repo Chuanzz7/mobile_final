@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.DatePicker
 import android.widget.TimePicker
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -56,7 +57,6 @@ class CreateTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener,
         binding = FragmentCreateTaskBinding.inflate(inflater, container, false)
         pickDateTime()
         createButton()
-        getDateTimeCalender()
 
         assignmentViewModel.findAllMutable()
         assignmentViewModel.assignmentList.observe(viewLifecycleOwner) {
@@ -97,22 +97,31 @@ class CreateTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener,
     }
 
     private fun createButton() {
-        val calendar = Calendar.getInstance()
-        calendar.set(Calendar.DAY_OF_MONTH, saveDay)
-        calendar.set(Calendar.MONTH, saveMonth)
-        calendar.set(Calendar.YEAR, saveYear)
-
         binding.btnCreateTask.setOnClickListener {
-            if (itemPos != null) {
-                assignmentViewModel.assignmentList.value?.get(itemPos!!)?.let { it1 ->
-                    taskViewModel.insert(
-                        it1.id,
-                        binding.txtTaskName.text.toString(),
-                        calendar.time
-                    )
+            if (itemPos == null || binding.txtTaskName.text.isNullOrBlank() || binding.txtTime.text.isNullOrBlank() || binding.txtDate.text.isNullOrBlank()) {
+                Toast.makeText(
+                    requireContext(),
+                    "Please fill in all the fields!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                if (itemPos != null) {
+                    assignmentViewModel.assignmentList.value?.get(itemPos!!)?.let { it1 ->
+                        val calendar = Calendar.getInstance()
+                        calendar.set(Calendar.DAY_OF_MONTH, saveDay)
+                        calendar.set(Calendar.MONTH, saveMonth)
+                        calendar.set(Calendar.YEAR, saveYear)
+                        calendar.set(Calendar.HOUR, saveHour)
+                        calendar.set(Calendar.MINUTE, saveMinute)
+                        taskViewModel.insert(
+                            it1.id,
+                            binding.txtTaskName.text.toString(),
+                            calendar.time
+                        )
+                    }
                 }
+                it.findNavController().navigate(R.id.action_createTaskFragment_to_taskFragment)
             }
-            it.findNavController().navigate(R.id.action_createTaskFragment_to_taskFragment)
         }
     }
 
@@ -127,10 +136,12 @@ class CreateTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener,
 
     private fun pickDateTime() {
         binding.txtDate.setOnClickListener {
+            getDateTimeCalender()
             DatePickerDialog(requireContext(), this, year, month, day).show()
         }
 
         binding.txtTime.setOnClickListener {
+            getDateTimeCalender()
             TimePickerDialog(requireContext(), this, hour, minute, true).show()
         }
     }
@@ -151,6 +162,9 @@ class CreateTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener,
         saveMinute = minute
 
         val calendar = Calendar.getInstance()
+        calendar.set(Calendar.DAY_OF_MONTH, saveDay)
+        calendar.set(Calendar.MONTH, saveMonth)
+        calendar.set(Calendar.YEAR, saveYear)
         calendar.set(Calendar.HOUR, saveHour)
         calendar.set(Calendar.MINUTE, saveMinute)
         binding.txtTime.setText(SimpleDateFormat("HH:mm a").format(calendar.time))

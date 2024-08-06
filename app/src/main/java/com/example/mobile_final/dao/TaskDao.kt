@@ -25,4 +25,7 @@ interface TaskDao {
 
     @Update
     suspend fun updateCompleted(task: Task)
+
+    @Query("UPDATE task SET completed = 1, completed_time = :completed_time  WHERE assignment_id = :assignmentId")
+    suspend fun updateAllByAssignmentId(assignmentId: Int, completed_time: Long)
 }

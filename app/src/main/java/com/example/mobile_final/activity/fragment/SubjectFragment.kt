@@ -38,7 +38,6 @@ class SubjectFragment : Fragment() {
 
         binding.btnEnroll.setOnClickListener {
             subjectViewModel.enroll()
-            Toast.makeText(requireContext(), "Subject Enrolled !", Toast.LENGTH_SHORT).show()
         }
 
         subjectViewModel.subject.observe(viewLifecycleOwner) {

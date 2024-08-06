@@ -21,9 +21,13 @@ class AssignmentViewModel(private val assignmentDao: AssignmentDao) : ViewModel(
         return assignmentDao.findAllEnrolled()
     }
 
-     fun findAllMutable() = viewModelScope.launch {
+    fun findAllMutable() = viewModelScope.launch {
         assignmentDao.findAllTemp().collect {
             assignmentList.value = it
         }
+    }
+
+    fun submitAssignment(assignmentId: Int) = viewModelScope.launch {
+        assignmentDao.submitAssignmentById(assignmentId)
     }
 }

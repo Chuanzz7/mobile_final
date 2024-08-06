@@ -89,7 +89,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txtAssignmentName" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnSubmitAssignment"
             android:layout_width="65dp"
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
