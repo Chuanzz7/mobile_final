@@ -62,7 +62,7 @@ class AssignmentAdapter(val context: Context) :
 
             holder.itemBinding.txtAssignmentName.text = this.assignment.name
             holder.itemBinding.txtSubjectName.text = this.subject.name
-            holder.itemBinding.txtAssignmentWeight.text = this.assignment.weightage
+            holder.itemBinding.txtAssignmentWeight.text = "(" + this.assignment.weightage + ")"
             holder.itemBinding.txtAssignmentDescription.text = this.assignment.description
             holder.itemBinding.txtDeliverables.text = this.assignment.deliverables
             holder.itemBinding.txtAssignmentDue.text =
