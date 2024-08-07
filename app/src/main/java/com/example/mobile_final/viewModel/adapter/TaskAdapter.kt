@@ -1,7 +1,6 @@
 package com.example.mobile_final.viewModel.adapter
 
 import android.content.Context
-import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -63,13 +62,8 @@ class TaskAdapter(val context: Context) :
             holder.itemBinding.textContainerTaskContent.text = this.task.name
             holder.itemBinding.checkBoxTaskCompleted.isChecked = this.task.completed
             holder.itemBinding.txtAssignmentName.text = this.assignment.name
-            holder.itemBinding.txtTaskDueDate.text = SimpleDateFormat("dd-MM-yyyy HH:mm a").format(this.task.dueDate)
-            if (this.task.completed) {
-                holder.itemBinding.textContainerTaskContent.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-            } else {
-                holder.itemBinding.textContainerTaskContent.paintFlags =
-                    Paint.STRIKE_THRU_TEXT_FLAG.inv()
-            }
+            holder.itemBinding.txtTaskDueDate.text =
+                SimpleDateFormat("dd-MM-yyyy HH:mm a").format(this.task.dueDate)
 
             holder.itemBinding.checkBoxTaskCompleted.setOnClickListener {
                 this.task.completed = !this.task.completed
