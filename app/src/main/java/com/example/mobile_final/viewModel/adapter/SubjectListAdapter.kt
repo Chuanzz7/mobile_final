@@ -1,7 +1,9 @@
 package com.example.mobile_final.viewModel.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -11,7 +13,8 @@ import com.example.mobile_final.R
 import com.example.mobile_final.databinding.ContainerSubjectListBinding
 import com.example.mobile_final.entity.Subject
 
-class SubjectListAdapter : RecyclerView.Adapter<SubjectListAdapter.SubjectItemModel>() {
+class SubjectListAdapter(val context: Context) :
+    RecyclerView.Adapter<SubjectListAdapter.SubjectItemModel>() {
 
     class SubjectItemModel(val itemBinding: ContainerSubjectListBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
@@ -42,13 +45,21 @@ class SubjectListAdapter : RecyclerView.Adapter<SubjectListAdapter.SubjectItemMo
     }
 
     override fun onBindViewHolder(holder: SubjectItemModel, position: Int) {
-        val thisItem = differ.currentList[position]
-        holder.itemBinding.txtSubjectListName.text = thisItem.name
-        holder.itemBinding.txtLectureName.text = thisItem.description
-        val bundle = bundleOf("id" to thisItem.id)
-        holder.itemBinding.root.setOnClickListener {
-            it.findNavController()
-                .navigate(R.id.action_subjectListFragment_to_subjectFragment, bundle)
+        with(differ.currentList[position]) {
+            if (this.enrolled) {
+                holder.itemBinding.layoutSubjectListHighlight.background =
+                    ContextCompat.getDrawable(
+                        context,
+                        R.drawable.border_left_rounded_color
+                    )
+            }
+            holder.itemBinding.txtSubjectListName.text = this.name
+            holder.itemBinding.txtLectureName.text = this.description
+            val bundle = bundleOf("id" to this.id)
+            holder.itemBinding.root.setOnClickListener {
+                it.findNavController()
+                    .navigate(R.id.action_subjectListFragment_to_subjectFragment, bundle)
+            }
         }
     }
 }

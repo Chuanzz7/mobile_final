@@ -8,21 +8,32 @@
     android:layout_marginVertical="10dp"
     android:background="@drawable/grey_bg"
     android:elevation="5dp"
-    android:padding="20dp"
     tools:context=".activity.fragment.SubjectFragment">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/layoutSubjectListHighlight"
+        android:layout_width="20dp"
+        android:layout_height="95dp"
+        android:background="@drawable/border_left_rounded_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txtSubjectListName"
-        android:layout_width="239dp"
-        android:layout_height="30dp"
-        android:layout_marginHorizontal="20dp"
+        style="@style/TextAppearance.Material3.TitleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:text="@string/bottom_nav_subject"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/layoutSubjectListHighlight"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -30,22 +41,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:paddingEnd="40dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="5dp"
         android:ellipsize="end"
         android:maxLines="2"
+        android:paddingEnd="40dp"
         android:text="@string/description"
         android:textColor="@color/grey"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/layoutSubjectListHighlight"
         app:layout_constraintTop_toBottomOf="@+id/txtSubjectListName" />
 
     <ImageView
         android:id="@+id/rightArrowImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.492"
         app:srcCompat="@drawable/ic_round_arrow_right" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

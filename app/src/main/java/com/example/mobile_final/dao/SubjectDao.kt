@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface SubjectDao {
-    @Query("SELECT * FROM subject")
+    @Query("SELECT * FROM subject ORDER BY enrolled")
     fun getAll(): LiveData<List<Subject>>
 
     @Query("SELECT * FROM subject WHERE id = :id")

@@ -39,7 +39,7 @@ class SubjectListFragment : Fragment() {
     }
 
     private fun setupHomeRecyclerView() {
-        subjectListAdapter = SubjectListAdapter()
+        subjectListAdapter = SubjectListAdapter(requireContext())
         binding.recycleViewSubjectList.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = subjectListAdapter

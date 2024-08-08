@@ -20,7 +20,7 @@ interface AssignmentDao {
 //    fun findAllEnrolled(): LiveData<List<AssignmentSubject>>;
 
     @Transaction
-    @Query("SELECT assignment.* FROM assignment INNER JOIN subject s_ ON subject_id = s_.id WHERE s_.enrolled = 1 ")
+    @Query("SELECT assignment.* FROM assignment INNER JOIN subject s_ ON subject_id = s_.id WHERE s_.enrolled = 1 ORDER BY submitted  ")
     fun findAllEnrolled(): LiveData<List<AssignmentSubject>>;
 
     @Query("SELECT * FROM assignment WHERE submitted = 0")

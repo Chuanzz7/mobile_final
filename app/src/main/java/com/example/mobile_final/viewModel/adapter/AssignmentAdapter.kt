@@ -2,6 +2,7 @@ package com.example.mobile_final.viewModel.adapter
 
 import android.app.AlertDialog
 import android.content.Context
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -62,28 +63,34 @@ class AssignmentAdapter(val context: Context) :
 
             holder.itemBinding.txtAssignmentName.text = this.assignment.name
             holder.itemBinding.txtSubjectName.text = this.subject.name
-            holder.itemBinding.txtAssignmentWeight.text = "(" + this.assignment.weightage + ")"
+            holder.itemBinding.txtAssignmentWeight.text = "( " + this.assignment.weightage + " )"
             holder.itemBinding.txtAssignmentDescription.text = this.assignment.description
             holder.itemBinding.txtDeliverables.text = this.assignment.deliverables
-            holder.itemBinding.txtAssignmentDue.text =
-                (SimpleDateFormat("dd-MM-yyyy").format(this.assignment.dueDate))
+            holder.itemBinding.txtAssignmentDue.paint.isUnderlineText = true
+            holder.itemBinding.txtAssignmentDue.text = SimpleDateFormat("dd-MM-yyyy").format(this.assignment.dueDate)
             holder.itemBinding.btnTaskNavigate.setOnClickListener {
                 it.findNavController().navigate(R.id.action_assignmentFragment_to_taskFragment)
             }
-            holder.itemBinding.btnSubmitAssignment.setOnClickListener {
-                val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-                builder
-                    .setMessage("All related task will be completed")
-                    .setTitle("Submit Assignment?")
-                    .setPositiveButton("Yes") { dialog, which ->
-                        onItemClick?.invoke(this.assignment.id)
-                    }
-                    .setNegativeButton("No") { dialog, which ->
-                        // Do something else.
-                    }
+            if (this.assignment.submitted) {
+                holder.itemBinding.txtAssignmentName.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+                holder.itemBinding.btnSubmitAssignment.isEnabled = false
+                holder.itemBinding.btnSubmitAssignment.isClickable = false
+            } else {
+                holder.itemBinding.btnSubmitAssignment.setOnClickListener {
+                    val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+                    builder
+                        .setMessage("All related task will be completed")
+                        .setTitle("Submit Assignment?")
+                        .setPositiveButton("Yes") { dialog, which ->
+                            onItemClick?.invoke(this.assignment.id)
+                        }
+                        .setNegativeButton("No") { dialog, which ->
+                            // Do something else.
+                        }
 
-                val dialog: AlertDialog = builder.create()
-                dialog.show()
+                    val dialog: AlertDialog = builder.create()
+                    dialog.show()
+                }
             }
         }
     }
