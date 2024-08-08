@@ -1,18 +1,17 @@
 package com.example.mobile_final.activity.fragment
 
 import ImageSaver
-import android.app.ActionBar
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.mobile_final.database.AppDatabase
 import com.example.mobile_final.databinding.FragmentActivityListBinding
 import com.example.mobile_final.viewModel.ActivityViewModel
@@ -49,7 +48,7 @@ class ActivityListFragment : Fragment() {
     private fun setupHomeRecyclerView() {
         activityAdapter = ActivityAdapter()
         binding.recycleView.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = StaggeredGridLayoutManager(2, 1)
             adapter = activityAdapter
         }
 
@@ -70,11 +69,9 @@ class ActivityListFragment : Fragment() {
         // photo picker.
         if (uri != null) {
             activityViewModel.imagePath.value = uri
-            val imageView = ImageView(requireContext())
-            imageView.setImageURI(uri)
-            imageView.layout(0, 0, 0, 0)
-            imageView.setLayoutParams(ActionBar.LayoutParams(400, 400))
-            binding.createLayout.addView(imageView, 2)
+            binding.uploadedImage.setImageURI(uri)
+            binding.uploadedImage.layoutParams.width = 300
+            binding.uploadedImage.layoutParams.height = 300
         } else {
         }
     }
@@ -101,6 +98,16 @@ class ActivityListFragment : Fragment() {
 
         binding.txtTitle.text = null
         binding.txtDescription.text = null
-        binding.createLayout.removeViewAt(2)
+        if (activityViewModel.imagePath.value != null) {
+            binding.uploadedImage.setImageDrawable(null)
+            binding.uploadedImage.layoutParams.width = 0
+            binding.uploadedImage.layoutParams.height = 0
+        }
+
+        Toast.makeText(
+            requireContext(),
+            "Notes Added!",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
