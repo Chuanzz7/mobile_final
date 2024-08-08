@@ -28,4 +28,7 @@ interface TaskDao {
 
     @Query("UPDATE task SET completed = 1, completed_time = :completed_time  WHERE assignment_id = :assignmentId")
     suspend fun updateAllByAssignmentId(assignmentId: Int, completed_time: Long)
+
+    @Query("SELECT count(*) FROM task WHERE task.completed = 0")
+    fun calculateActive(): LiveData<Int>
 }

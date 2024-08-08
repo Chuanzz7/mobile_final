@@ -28,4 +28,10 @@ interface AssignmentDao {
 
     @Query("UPDATE assignment SET submitted = 1 WHERE id = :id ")
     suspend fun submitAssignmentById(id: Int)
+
+    @Query("SELECT count(*) FROM assignment INNER JOIN subject s_ ON subject_id = s_.id WHERE s_.enrolled = 1 AND submitted = 0")
+    fun findAllEnrolledCount(): LiveData<Int>;
+
+    @Query("SELECT * FROM assignment where submitted = 0 ORDER BY dueDate")
+    fun findRecent(): LiveData<Assignment>
 }

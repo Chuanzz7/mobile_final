@@ -67,9 +67,6 @@ class TaskAdapterCompleted(val context: Context) :
                 SimpleDateFormat("dd-MM-yyyy HH:mm a").format(this.task.dueDate)
             if (this.task.completed) {
                 holder.itemBinding.textContainerTaskContent.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-            } else {
-                holder.itemBinding.textContainerTaskContent.paintFlags =
-                    Paint.STRIKE_THRU_TEXT_FLAG.inv()
             }
 
             holder.itemBinding.checkBoxTaskCompleted.setOnClickListener {

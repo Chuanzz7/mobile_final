@@ -17,4 +17,7 @@ interface SubjectDao {
 
     @Update
     suspend fun update(subject: Subject)
+
+    @Query("SELECT count(*) FROM subject WHERE subject.enrolled = 1")
+    fun calculateActive(): LiveData<Int>
 }
