@@ -13,10 +13,12 @@ data class Subject(
     var name: String,
     @ColumnInfo(name = "description")
     var description: String,
-    @ColumnInfo(name = "lecture_name")
-    var lectureName: String,
-    @ColumnInfo(name = "lecture_picture")
-    var lecturePicture: String,
+    @ColumnInfo(name = "student_amount")
+    var studentAmount: Int,
+    @ColumnInfo(name = "credit_hours")
+    var creditHours: Int,
+    @ColumnInfo(name = "year")
+    var year: Int,
     @ColumnInfo(name = "details")
     var subjectDetails: List<HashMap<String, String>>,
     @ColumnInfo(name = "enrolled")

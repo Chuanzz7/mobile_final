@@ -26,4 +26,7 @@
     <string name="deliverables_underline"><u>Deliverables</u></string>
     <string name="create_new_task"><u>Create New Task</u></string>
     <string name="my_progress_count">%1$d out of %2$d Completed</string>
+    <string name="studentCount">%1$d Students</string>
+    <string name="creditHours">%1$d  Credits Hour</string>
+    <string name="year">Year %1$d</string>
 </resources>

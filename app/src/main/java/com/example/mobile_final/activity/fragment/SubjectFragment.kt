@@ -41,11 +41,29 @@ class SubjectFragment : Fragment() {
             subjectViewModel.enroll()
         }
 
+
         subjectViewModel.subject.observe(viewLifecycleOwner) {
             it?.let {
                 binding.txtSubjectName.text = it.name
                 binding.btnEnroll.isEnabled = !it.enrolled
                 binding.btnEnroll.isClickable = !it.enrolled
+
+                binding.txtNumberOfStudent.text =
+                    resources.getString(
+                        R.string.studentCount, it.studentAmount
+                    )
+
+                binding.txtCreditHour.text =
+                    resources.getString(
+                        R.string.creditHours, it.creditHours
+                    )
+
+                binding.txtYear.text =
+                    resources.getString(
+                        R.string.year, it.year
+                    )
+
+                binding.textSubjectDescription.text = it.description
             }
         }
 

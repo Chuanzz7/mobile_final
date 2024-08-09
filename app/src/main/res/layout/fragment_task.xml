@@ -26,11 +26,13 @@
 
                 <TextView
                     android:id="@+id/textView7"
-                    style="@style/MaterialAlertDialog.Material3.Title.Text"
+                    style="@style/TextAppearance.Material3.HeadlineMedium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="@string/to_do_list" />
+                    android:text="@string/to_do_list"
+                    android:textColor="@color/accent"
+                    android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycleViewTaskIncomplete"
@@ -46,11 +48,13 @@
 
                 <TextView
                     android:id="@+id/textView8"
-                    style="@style/MaterialAlertDialog.Material3.Title.Text"
+                    style="@style/TextAppearance.Material3.HeadlineMedium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="@string/completed" />
+                    android:text="@string/completed"
+                    android:textColor="@color/accent"
+                    android:textStyle="normal|bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycleViewTaskComplete"

@@ -9,135 +9,126 @@
     android:fitsSystemWindows="true"
     tools:context=".activity.fragment.SubjectFragment">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_subject_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="SubjectName"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="20dp">
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/txt_subject_name">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txtNumberOfStudent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="false"
-                android:background="@drawable/gradient_bg"
-                android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_margin="10dp"
+                android:background="@drawable/rounded_border_secondary_color"
+                android:elevation="3dp"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="@string/studentCount"
+                android:textColor="@color/white" />
 
-                <Button
-                    android:id="@+id/btnBack"
-                    style="@style/Widget.Material3.Button.TextButton.Icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/back"
-                    android:textColor="@color/white"
-                    app:icon="@drawable/back"
-                    app:iconTint="@color/white"
-                    app:iconTintMode="multiply"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txtCreditHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/rounded_border_secondary_color"
+                android:elevation="3dp"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="@string/creditHours"
+                android:textColor="@color/white" />
 
-                <TextView
-                    android:id="@+id/txt_subject_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="53dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:text="SubjectName"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-
-                    app:layout_constraintTop_toBottomOf="@+id/btnBack" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@+id/txt_subject_name"
-                    tools:layout_editor_absoluteX="10dp">
-
-                    <TextView
-                        android:id="@+id/txtNumberOfStudent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/rounded_border"
-                        android:gravity="center"
-                        android:padding="6dp"
-                        android:text="100 Students" />
-
-                    <TextView
-                        android:id="@+id/txtCreditHour"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/rounded_border"
-                        android:gravity="center"
-                        android:padding="6dp"
-                        android:text="4 Credits Hour" />
-
-                    <TextView
-                        android:id="@+id/txtYear"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/rounded_border"
-                        android:gravity="center"
-                        android:padding="6dp"
-                        android:text="Year 2" />
-
-                </LinearLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycleViewSubjectDetails"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/txtYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/rounded_border_secondary_color"
+                android:elevation="3dp"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="@string/year"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <TextView
+            android:id="@+id/textSubjectDescription"
+            style="@style/TextAppearance.Material3.BodyMedium"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/rounded_border"
+            android:gravity="center_horizontal"
+            android:paddingVertical="20dp"
+            android:text="TextView"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout" />
 
-            <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleViewSubjectDetails"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textSubjectDescription" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/btn_enroll"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_alignParentBottom="true"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="20dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                android:layout_weight="1"
+                android:text="Enroll"
+                android:textColor="@color/white"
+                android:theme="@style/evaluate.button.disable" />
 
-                <Button
-                    android:id="@+id/btn_enroll"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_weight="1"
-                    android:text="Enroll"
-                    android:textColor="@color/white"
-                    android:theme="@style/evaluate.button.disable" />
-
-                <Button
-                    android:id="@+id/btn_consultation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_weight="1"
-                    android:text="Consultation"
-                    android:textColor="@color/white"
-                    android:theme="@style/evaluate.button.disable" />
-            </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </RelativeLayout>
+            <Button
+                android:id="@+id/btn_consultation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1"
+                android:text="Consultation"
+                android:textColor="@color/white"
+                android:theme="@style/evaluate.button.disable" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
