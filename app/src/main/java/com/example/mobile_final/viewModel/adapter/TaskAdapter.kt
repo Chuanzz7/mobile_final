@@ -1,6 +1,5 @@
 package com.example.mobile_final.viewModel.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -12,7 +11,7 @@ import com.example.mobile_final.entity.Task
 import java.text.SimpleDateFormat
 import java.util.Date
 
-class TaskAdapter(val context: Context) :
+class TaskAdapter() :
     RecyclerView.Adapter<TaskAdapter.TaskItemModel>() {
 
     var onItemClick: ((Task) -> Unit)? = null

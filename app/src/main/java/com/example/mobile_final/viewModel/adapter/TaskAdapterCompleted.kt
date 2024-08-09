@@ -1,6 +1,5 @@
 package com.example.mobile_final.viewModel.adapter
 
-import android.content.Context
 import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,7 +12,7 @@ import com.example.mobile_final.entity.Task
 import java.text.SimpleDateFormat
 import java.util.Date
 
-class TaskAdapterCompleted(val context: Context) :
+class TaskAdapterCompleted() :
     RecyclerView.Adapter<TaskAdapterCompleted.TaskItemModel>() {
 
     var onItemClick: ((Task) -> Unit)? = null

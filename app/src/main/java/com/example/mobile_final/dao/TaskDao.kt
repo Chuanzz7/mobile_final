@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.example.mobile_final.dto.AssignmentTask
+import com.example.mobile_final.entity.Assignment
 import com.example.mobile_final.entity.Task
 
 @Dao
@@ -31,4 +32,7 @@ interface TaskDao {
 
     @Query("SELECT count(*) FROM task WHERE task.completed = 0")
     fun calculateActive(): LiveData<Int>
+
+    @Query("SELECT * FROM task where completed = 0 ORDER BY dueDate LIMIT 3")
+    fun findRecent(): LiveData<List<Task>>
 }

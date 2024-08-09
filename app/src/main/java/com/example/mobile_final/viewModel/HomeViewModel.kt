@@ -6,6 +6,7 @@ import com.example.mobile_final.dao.AssignmentDao
 import com.example.mobile_final.dao.SubjectDao
 import com.example.mobile_final.dao.TaskDao
 import com.example.mobile_final.entity.Assignment
+import com.example.mobile_final.entity.Task
 
 class HomeViewModel(
     private val taskDao: TaskDao,
@@ -26,7 +27,11 @@ class HomeViewModel(
         return subjectDao.calculateActive();
     }
 
-    fun findRecentAssignment(): LiveData<Assignment>{
+    fun findRecentAssignment(): LiveData<List<Assignment>> {
         return assignmentDao.findRecent();
+    }
+
+    fun findRecentTask(): LiveData<List<Task>> {
+        return taskDao.findRecent();
     }
 }

@@ -41,7 +41,7 @@ class TaskFragment : Fragment() {
     }
 
     private fun setupHomeRecyclerView() {
-        taskAdapter = TaskAdapter(requireContext())
+        taskAdapter = TaskAdapter()
         binding.recycleViewTaskIncomplete.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = taskAdapter
@@ -58,7 +58,7 @@ class TaskFragment : Fragment() {
     }
 
     private fun setupHomeRecyclerView2() {
-        taskAdapter2 = TaskAdapterCompleted(requireContext())
+        taskAdapter2 = TaskAdapterCompleted()
         binding.recycleViewTaskComplete.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = taskAdapter2

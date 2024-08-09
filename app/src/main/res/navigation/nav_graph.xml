@@ -9,7 +9,18 @@
         android:id="@+id/homeFragment"
         android:name="com.example.mobile_final.activity.fragment.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_taskFragment"
+            app:destination="@id/taskFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_assignmentFragment"
+            app:destination="@id/assignmentFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/activityFragment"
         android:name="com.example.mobile_final.activity.fragment.ActivityListFragment"
