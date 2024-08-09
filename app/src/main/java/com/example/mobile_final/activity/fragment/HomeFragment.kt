@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobile_final.R
 import com.example.mobile_final.database.AppDatabase
@@ -14,8 +15,6 @@ import com.example.mobile_final.databinding.FragmentHomeBinding
 import com.example.mobile_final.viewModel.HomeViewModel
 import com.example.mobile_final.viewModel.adapter.HomeAssignmentAdapter
 import com.example.mobile_final.viewModel.adapter.HomeTaskAdapter
-import com.example.mobile_final.viewModel.adapter.TaskAdapter
-import com.example.mobile_final.viewModel.adapter.TaskAdapterCompleted
 import com.example.mobile_final.viewModel.factory.HomeViewModelFactory
 
 class HomeFragment : Fragment() {
@@ -36,6 +35,7 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         setupAssignmentAdapter()
         setupTaskAdapter()
+        homeViewModel.findMyProgress()
 
         homeViewModel.subjectCount().observe(viewLifecycleOwner) {
             it?.let {
@@ -88,13 +88,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupTaskAdapter() {
-        taskAdapter = HomeTaskAdapter()
+        taskAdapter = HomeTaskAdapter(requireContext())
         binding.myTaskView.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = GridLayoutManager(context, 2)
             adapter = taskAdapter
         }
         activity?.let {
-            homeViewModel.findRecentTask()
+            homeViewModel.taskAssignment
                 .observe(viewLifecycleOwner) {
                     taskAdapter.differ.submitList(it)
                 }
