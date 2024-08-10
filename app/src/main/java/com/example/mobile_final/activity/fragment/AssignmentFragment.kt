@@ -11,7 +11,7 @@ import com.example.mobile_final.database.AppDatabase
 import com.example.mobile_final.databinding.FragmentAssignmentBinding
 import com.example.mobile_final.viewModel.AssignmentViewModel
 import com.example.mobile_final.viewModel.TaskViewModel
-import com.example.mobile_final.viewModel.adapter.AssignmentAdapter
+import com.example.mobile_final.activity.adapter.AssignmentAdapter
 import com.example.mobile_final.viewModel.factory.AssignmentViewModelFactory
 import com.example.mobile_final.viewModel.factory.TaskViewModelFactory
 

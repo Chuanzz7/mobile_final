@@ -1,4 +1,4 @@
-package com.example.mobile_final.viewModel.adapter
+package com.example.mobile_final.activity.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,6 +10,7 @@ import com.example.mobile_final.dto.AssignmentTask
 import com.example.mobile_final.entity.Task
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 class TaskAdapter() :
     RecyclerView.Adapter<TaskAdapter.TaskItemModel>() {
@@ -62,7 +63,7 @@ class TaskAdapter() :
             holder.itemBinding.checkBoxTaskCompleted.isChecked = this.task.completed
             holder.itemBinding.txtAssignmentName.text = this.assignment.name
             holder.itemBinding.txtTaskDueDate.text =
-                SimpleDateFormat("dd-MM-yyyy HH:mm a").format(this.task.dueDate)
+                SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(this.task.dueDate)
 
             holder.itemBinding.checkBoxTaskCompleted.setOnClickListener {
                 this.task.completed = !this.task.completed
@@ -75,7 +76,7 @@ class TaskAdapter() :
                 notifyDataSetChanged()
             }
 
-            holder.itemBinding.expandedView.setOnClickListener {
+            holder.itemBinding.layoutTaskHeader.setOnClickListener {
                 this.task.completed = !this.task.completed
                 if (this.task.completed) {
                     this.task.completed_time = Date()

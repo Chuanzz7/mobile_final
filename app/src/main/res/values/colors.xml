@@ -7,4 +7,5 @@
     <color name="secondary">#AAB2F3</color>
     <color name="primary">#F4F4F9</color>
     <color name="success">#22BB33</color>
+    <color name="red">#ff8383</color>
 </resources>

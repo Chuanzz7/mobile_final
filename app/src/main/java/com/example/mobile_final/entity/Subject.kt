@@ -9,10 +9,14 @@ data class Subject(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var id: Int,
+    @ColumnInfo(name = "code")
+    var code: String,
     @ColumnInfo(name = "name")
     var name: String,
     @ColumnInfo(name = "description")
     var description: String,
+    @ColumnInfo(name = "email")
+    var email: String,
     @ColumnInfo(name = "student_amount")
     var studentAmount: Int,
     @ColumnInfo(name = "credit_hours")

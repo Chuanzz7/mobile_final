@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobile_final.database.AppDatabase
 import com.example.mobile_final.databinding.FragmentSubjectListBinding
 import com.example.mobile_final.viewModel.SubjectListViewModel
-import com.example.mobile_final.viewModel.adapter.SubjectListAdapter
+import com.example.mobile_final.activity.adapter.SubjectListAdapter
 import com.example.mobile_final.viewModel.factory.SubjectListViewModelFactory
 
 class SubjectListFragment : Fragment() {

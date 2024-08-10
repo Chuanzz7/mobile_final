@@ -1,36 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="5dp"
     android:background="@drawable/grey_bg"
     android:elevation="3dp"
-    android:padding="20dp"
-    android:layout_margin="5dp">
+    android:padding="20dp">
 
     <TextView
         android:id="@+id/titleTxt"
-        android:layout_width="298dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="4dp"
-        android:maxLines="1"
+        style="@style/TextAppearance.Material3.TitleLarge"
+        android:layout_width="271dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="8dp"
+        android:maxLines="2"
         android:text="Title"
-        android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/dueDays"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="0 Days"
+        android:layout_height="31dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="8dp"
+        android:maxLines="1"
+        android:text="0"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/titleTxt"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/labelDueDays"
+        android:layout_width="wrap_content"
+        android:layout_height="31dp"
+        android:layout_marginStart="2dp"
+        android:gravity="end"
+        android:maxLines="1"
+        android:text="Days"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.777"
+        app:layout_constraintStart_toEndOf="@+id/titleTxt"
+        app:layout_constraintTop_toBottomOf="@+id/dueDays" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progressBar"
@@ -55,7 +74,7 @@
         android:id="@+id/dueDateTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:text="12/09/2024 11:59 PM"
         app:layout_constraintStart_toEndOf="@+id/dueDateLabelTxt"

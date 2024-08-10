@@ -32,6 +32,8 @@ interface AssignmentDao {
     @Query("SELECT count(*) FROM assignment INNER JOIN subject s_ ON subject_id = s_.id WHERE s_.enrolled = 1 AND submitted = 0")
     fun findAllEnrolledCount(): LiveData<Int>;
 
-    @Query("SELECT * FROM assignment where submitted = 0 ORDER BY dueDate LIMIT 3")
+    @Query("SELECT assignment.* FROM assignment " +
+            "INNER JOIN subject s_ ON subject_id = s_.id " +
+            "WHERE s_.enrolled = 1 AND submitted = 0 ORDER BY dueDate LIMIT 3")
     fun findRecent(): LiveData<List<Assignment>>
 }

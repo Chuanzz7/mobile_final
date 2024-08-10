@@ -12,8 +12,8 @@ import com.example.mobile_final.R
 import com.example.mobile_final.database.AppDatabase
 import com.example.mobile_final.databinding.FragmentTaskBinding
 import com.example.mobile_final.viewModel.TaskViewModel
-import com.example.mobile_final.viewModel.adapter.TaskAdapter
-import com.example.mobile_final.viewModel.adapter.TaskAdapterCompleted
+import com.example.mobile_final.activity.adapter.TaskAdapter
+import com.example.mobile_final.activity.adapter.TaskAdapterCompleted
 import com.example.mobile_final.viewModel.factory.TaskViewModelFactory
 
 

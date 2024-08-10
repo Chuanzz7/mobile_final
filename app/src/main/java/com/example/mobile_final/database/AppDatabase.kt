@@ -40,7 +40,7 @@ abstract class AppDatabase : RoomDatabase() {
                         "app"
 
                     )
-//                        .createFromAsset("app.db")
+                        .createFromAsset("app.db")
                         .build()
                 }
                 return instance

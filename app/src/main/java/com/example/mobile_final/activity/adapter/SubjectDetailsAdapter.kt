@@ -1,6 +1,5 @@
-package com.example.mobile_final.viewModel.adapter
+package com.example.mobile_final.activity.adapter
 
-import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +26,7 @@ class SubjectDetailsAdapter() :
             oldItem: HashMap<String, String>,
             newItem: HashMap<String, String>
         ): Boolean {
-            return oldItem == newItem
+            return oldItem.keys == newItem.keys
         }
     }
 

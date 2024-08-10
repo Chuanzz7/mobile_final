@@ -25,6 +25,7 @@ import com.example.mobile_final.viewModel.factory.AssignmentViewModelFactory
 import com.example.mobile_final.viewModel.factory.TaskViewModelFactory
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 class CreateTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener,
     TimePickerDialog.OnTimeSetListener {
@@ -111,7 +112,7 @@ class CreateTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener,
                         calendar.set(Calendar.DAY_OF_MONTH, saveDay)
                         calendar.set(Calendar.MONTH, saveMonth)
                         calendar.set(Calendar.YEAR, saveYear)
-                        calendar.set(Calendar.HOUR, saveHour)
+                        calendar.set(Calendar.HOUR_OF_DAY, saveHour)
                         calendar.set(Calendar.MINUTE, saveMinute)
                         taskViewModel.insert(
                             it1.id,
@@ -130,7 +131,7 @@ class CreateTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener,
         day = cal.get(Calendar.DAY_OF_MONTH)
         month = cal.get(Calendar.MONTH)
         year = cal.get(Calendar.YEAR)
-        hour = cal.get(Calendar.HOUR)
+        hour = cal.get(Calendar.HOUR_OF_DAY)
         minute = cal.get(Calendar.MINUTE)
     }
 
@@ -154,7 +155,7 @@ class CreateTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener,
         calendar.set(Calendar.DAY_OF_MONTH, saveDay)
         calendar.set(Calendar.MONTH, saveMonth)
         calendar.set(Calendar.YEAR, saveYear)
-        binding.txtDate.setText(SimpleDateFormat("dd-MM-yyyy").format(calendar.time))
+        binding.txtDate.setText(SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(calendar.time))
     }
 
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
@@ -165,8 +166,8 @@ class CreateTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener,
         calendar.set(Calendar.DAY_OF_MONTH, saveDay)
         calendar.set(Calendar.MONTH, saveMonth)
         calendar.set(Calendar.YEAR, saveYear)
-        calendar.set(Calendar.HOUR, saveHour)
+        calendar.set(Calendar.HOUR_OF_DAY, saveHour)
         calendar.set(Calendar.MINUTE, saveMinute)
-        binding.txtTime.setText(SimpleDateFormat("HH:mm a").format(calendar.time))
+        binding.txtTime.setText(SimpleDateFormat("HH:mm", Locale.getDefault()).format(calendar.time))
     }
 }

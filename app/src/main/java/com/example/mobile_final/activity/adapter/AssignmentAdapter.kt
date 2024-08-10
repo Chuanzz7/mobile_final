@@ -1,4 +1,4 @@
-package com.example.mobile_final.viewModel.adapter
+package com.example.mobile_final.activity.adapter
 
 import android.app.AlertDialog
 import android.content.Context
@@ -13,6 +13,7 @@ import com.example.mobile_final.R
 import com.example.mobile_final.databinding.ContainerAssignmentListBinding
 import com.example.mobile_final.dto.AssignmentSubject
 import java.text.SimpleDateFormat
+import java.util.Locale
 
 class AssignmentAdapter(val context: Context) :
     RecyclerView.Adapter<AssignmentAdapter.AssignmentItemModel>() {
@@ -62,12 +63,13 @@ class AssignmentAdapter(val context: Context) :
         with(differ.currentList[position]) {
 
             holder.itemBinding.txtAssignmentName.text = this.assignment.name
-            holder.itemBinding.txtSubjectName.text = this.subject.name
-            holder.itemBinding.txtAssignmentWeight.text = "( " + this.assignment.weightage + " )"
+            holder.itemBinding.txtSubjectName.text =
+                this.subject.name + " (" + this.assignment.weightage + ")"
             holder.itemBinding.txtAssignmentDescription.text = this.assignment.description
             holder.itemBinding.txtDeliverables.text = this.assignment.deliverables
             holder.itemBinding.txtAssignmentDue.paint.isUnderlineText = true
-            holder.itemBinding.txtAssignmentDue.text = SimpleDateFormat("dd-MM-yyyy").format(this.assignment.dueDate)
+            holder.itemBinding.txtAssignmentDue.text =
+                "Due Date :" + SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(this.assignment.dueDate)
             holder.itemBinding.btnTaskNavigate.setOnClickListener {
                 it.findNavController().navigate(R.id.action_assignmentFragment_to_taskFragment)
             }

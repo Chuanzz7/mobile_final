@@ -13,8 +13,8 @@ import com.example.mobile_final.R
 import com.example.mobile_final.database.AppDatabase
 import com.example.mobile_final.databinding.FragmentHomeBinding
 import com.example.mobile_final.viewModel.HomeViewModel
-import com.example.mobile_final.viewModel.adapter.HomeAssignmentAdapter
-import com.example.mobile_final.viewModel.adapter.HomeTaskAdapter
+import com.example.mobile_final.activity.adapter.HomeAssignmentAdapter
+import com.example.mobile_final.activity.adapter.HomeTaskAdapter
 import com.example.mobile_final.viewModel.factory.HomeViewModelFactory
 
 class HomeFragment : Fragment() {
@@ -74,7 +74,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupAssignmentAdapter() {
-        assignmentAdapter = HomeAssignmentAdapter()
+        assignmentAdapter = HomeAssignmentAdapter(requireContext())
         binding.recycleViewHomeAssignment.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = assignmentAdapter

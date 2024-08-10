@@ -14,8 +14,8 @@
 
         android:id="@+id/layoutSubjectListHighlight"
         android:layout_width="20dp"
-        android:layout_height="95dp"
-        android:background="@drawable/border_left_rounded_color"
+        android:layout_height="180dp"
+        android:background="@drawable/border_left_rounded_transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,26 +23,26 @@
 
     <TextView
         android:id="@+id/txtSubjectListName"
-        style="@style/TextAppearance.Material3.TitleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextAppearance.Material3.HeadlineMedium"
+        android:layout_width="325dp"
+        android:layout_height="76dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:ellipsize="end"
-        android:maxLines="1"
+        android:maxLines="2"
         android:text="@string/bottom_nav_subject"
-        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/layoutSubjectListHighlight"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtSubjectCode" />
 
     <TextView
         android:id="@+id/txtLectureName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextAppearance.Material3.BodySmall"
+        android:layout_width="332dp"
+        android:layout_height="38dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:maxLines="2"
         android:paddingEnd="40dp"
@@ -61,5 +61,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.492"
         app:srcCompat="@drawable/ic_round_arrow_right" />
+
+    <TextView
+        android:id="@+id/txtSubjectCode"
+        style="@style/TextAppearance.Material3.BodyMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="15dp"
+        android:maxLines="1"
+        android:text="@string/subject_code"
+        app:layout_constraintStart_toEndOf="@+id/layoutSubjectListHighlight"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

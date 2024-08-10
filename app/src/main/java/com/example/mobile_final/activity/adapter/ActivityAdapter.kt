@@ -1,16 +1,23 @@
-package com.example.mobile_final.viewModel.adapter
+package com.example.mobile_final.activity.adapter
 
+import android.app.ActionBar.LayoutParams
+import android.content.Context
+import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupWindow
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mobile_final.databinding.ContainerActivityBinding
+import com.example.mobile_final.databinding.PopupTaskBinding
 import com.example.mobile_final.entity.Activity
 import java.io.File
 
-class ActivityAdapter : RecyclerView.Adapter<ActivityAdapter.ActivityItemModel>() {
+class ActivityAdapter(val context: Context, val parentView: View) :
+    RecyclerView.Adapter<ActivityAdapter.ActivityItemModel>() {
 
     class ActivityItemModel(val itemBinding: ContainerActivityBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
@@ -50,6 +57,24 @@ class ActivityAdapter : RecyclerView.Adapter<ActivityAdapter.ActivityItemModel>(
             holder.itemBinding.imageView.layoutParams.width = 400;
             Glide.with(holder.itemView).load(File(thisItem.imagePath!!))
                 .into(holder.itemBinding.imageView)
+        }
+
+        holder.itemBinding.layout.setOnClickListener {
+            val popUpBinding = PopupTaskBinding.inflate(LayoutInflater.from(context))
+            val window =
+                PopupWindow(
+                    popUpBinding.root,
+                    LayoutParams.WRAP_CONTENT,
+                    LayoutParams.WRAP_CONTENT,
+                    true
+                )
+            popUpBinding.txtTaskTitle.text = thisItem.title
+            popUpBinding.txtTaskDescription.text = thisItem.description
+            if (thisItem.imagePath != null) {
+                Glide.with(popUpBinding.root).load(File(thisItem.imagePath!!))
+                    .into(popUpBinding.imageView2)
+            }
+            window.showAtLocation(parentView, Gravity.CENTER, 0, 0)
         }
     }
 }

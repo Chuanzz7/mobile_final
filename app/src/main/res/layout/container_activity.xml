@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
@@ -12,8 +13,8 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
-        android:scaleType="center"
         android:layout_height="wrap_content"
+        android:scaleType="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,11 +24,11 @@
         style="@style/TextAppearance.Material3.TitleLarge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
         android:paddingHorizontal="10dp"
         android:text="Title"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginVertical="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -36,6 +37,7 @@
         android:id="@+id/txt_activity_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:maxLines="4"
         android:paddingHorizontal="10dp"
         android:text="Description"
         android:textColor="@color/grey"

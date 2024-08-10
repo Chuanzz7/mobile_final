@@ -1,4 +1,4 @@
-package com.example.mobile_final.viewModel.adapter
+package com.example.mobile_final.activity.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.mobile_final.database.AppDatabase
 import com.example.mobile_final.databinding.FragmentActivityListBinding
 import com.example.mobile_final.viewModel.ActivityViewModel
-import com.example.mobile_final.viewModel.adapter.ActivityAdapter
+import com.example.mobile_final.activity.adapter.ActivityAdapter
 import com.example.mobile_final.viewModel.factory.ActivityViewModelFactory
 
 class ActivityListFragment : Fragment() {
@@ -33,7 +33,7 @@ class ActivityListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentActivityListBinding.inflate(inflater, container, false)
-        setupHomeRecyclerView()
+        setupHomeRecyclerView(binding.root)
         binding.btnImage.setOnClickListener { pickPhoto() }
         binding.btnCreate.setOnClickListener { createPost() }
         return binding.root
@@ -45,8 +45,8 @@ class ActivityListFragment : Fragment() {
         activityViewModel = ViewModelProvider(this, factory)[ActivityViewModel::class.java]
     }
 
-    private fun setupHomeRecyclerView() {
-        activityAdapter = ActivityAdapter()
+    private fun setupHomeRecyclerView(view : View) {
+        activityAdapter = ActivityAdapter(requireContext(),view)
         binding.recycleView.apply {
             layoutManager = StaggeredGridLayoutManager(2, 1)
             adapter = activityAdapter
@@ -77,6 +77,18 @@ class ActivityListFragment : Fragment() {
     }
 
     private fun createPost() {
+        if (binding.txtTitle.text.isNullOrBlank()
+            && binding.txtDescription.text.isNullOrBlank()
+            && activityViewModel.imagePath.value == null) {
+            Toast.makeText(
+                requireContext(),
+                "Please enter info!",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
+
         val image: String?
         if (activityViewModel.imagePath.value != null) {
             image = ImageSaver.saveToInternalStorage(

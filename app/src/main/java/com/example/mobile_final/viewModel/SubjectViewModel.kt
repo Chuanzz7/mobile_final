@@ -25,23 +25,17 @@ class SubjectViewModel(private val subjectDao: SubjectDao) : ViewModel() {
         val list = ArrayList<HashMap<String, String>>()
         subjectDao.findById(id)
             .collect { x ->
+                list.clear()
                 subject.value = x
                 x?.subjectDetails?.forEach {
-                    it["expanded"] = "false"
+                    it["expand"] = "false"
                     list.add(it)
                 }
                 liveDetails.postValue(list)
             }
     }
 
-     fun update(subject: Subject) = viewModelScope.launch {
-        subjectDao.update(subject)
-    }
-
-    fun enroll() {
-        if (subject.value != null) {
-            subject.value!!.enrolled = true
-            update(subject.value!!)
-        }
+    fun update(id: Int) = viewModelScope.launch {
+        subjectDao.updateEnroll(id)
     }
 }

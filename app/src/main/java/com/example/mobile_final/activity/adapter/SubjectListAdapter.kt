@@ -1,4 +1,4 @@
-package com.example.mobile_final.viewModel.adapter
+package com.example.mobile_final.activity.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -53,6 +53,7 @@ class SubjectListAdapter(val context: Context) :
                         R.drawable.border_left_rounded_color
                     )
             }
+            holder.itemBinding.txtSubjectCode.text = this.code
             holder.itemBinding.txtSubjectListName.text = this.name
             holder.itemBinding.txtLectureName.text = this.description
             val bundle = bundleOf("id" to this.id)

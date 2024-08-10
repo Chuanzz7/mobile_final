@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">mobile_final</string>
+    <string name="app_name">Assignment Buddy</string>
     <string name="intro_title">Stay Connect and Engage Your Study with <font color="#6033ba">\n Assignment Buddy</font></string>
     <string name="intro_text">Browse the latest courses from the apps\nGet latest assignment details\nManage and Organize your studies</string>
     <string name="intro_button">Let\'s Get Started</string>
@@ -17,6 +17,8 @@
     <string name="description">Description</string>
     <string name="assignment_name">Assignment Name</string>
     <string name="due_date">Due Date : </string>
+    <string name="sample_date">12-12-2002</string>
+    <string name="sample_date_time">12-12-2002 12:00 PM</string>
     <string name="weightage">Weightage</string>
     <string name="deliverables">Deliverables</string>
     <string name="task">Task</string>
@@ -29,4 +31,5 @@
     <string name="studentCount">%1$d Students</string>
     <string name="creditHours">%1$d  Credits Hour</string>
     <string name="year">Year %1$d</string>
+    <string name="subject_code">Subject Code</string>
 </resources>
