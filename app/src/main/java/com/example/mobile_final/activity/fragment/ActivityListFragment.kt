@@ -111,6 +111,7 @@ class ActivityListFragment : Fragment() {
         binding.txtTitle.text = null
         binding.txtDescription.text = null
         if (activityViewModel.imagePath.value != null) {
+            activityViewModel.imagePath.value = null
             binding.uploadedImage.setImageDrawable(null)
             binding.uploadedImage.layoutParams.width = 0
             binding.uploadedImage.layoutParams.height = 0
